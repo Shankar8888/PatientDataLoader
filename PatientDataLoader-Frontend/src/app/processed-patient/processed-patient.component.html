@@ -1,0 +1,36 @@
+<div>
+    <div class="Container2" *ngIf="isSuccess">
+        <u><h2>Processed Patient Details </h2></u>
+        <table><tr>
+                <th>PatientId</th>
+                <th>Patient Name</th>  
+                <th>Patient Address</th>  
+                <th>Patient DOB</th>
+                <th>Patient Email</th>
+                <th>Patient Phone</th>
+                <th>Drug Id</th>
+                <th>Drug Name</th>
+                <th>Status</th>
+            </tr> </table>
+    <div *ngFor="let patient of patients">
+        <table *ngIf="patient.status==='Processed'">
+        <tr>
+        <td>{{patient.patientId}}</td>
+        <td>{{patient.patientName}}</td>
+        <td>{{patient.patientAddress}}</td>
+        <td>{{patient.patientDOB}}</td>
+        <td>{{patient.patientEmail}}</td>
+        <td>{{patient.patientPhone}}</td>
+        <td>{{patient.drugId}}</td>
+        <td>{{patient.drugName}}</td>
+        <td>{{patient.status}}</td>       
+        </tr>
+        </table>
+        </div>
+
+</div>
+
+
+<div class="err-show" *ngIf="!isSuccess">
+    <h3><div class="alert alert-danger">{{this.errorMsg}}</div></h3>
+</div>

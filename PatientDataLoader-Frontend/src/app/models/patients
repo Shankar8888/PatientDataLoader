@@ -1,0 +1,11 @@
+export interface patients{
+patientId:number;
+patientName:string;
+patientAddress:string;
+patientDOB:Date;
+patientEmail:string;
+patientPhone:string;
+drugId:string;
+grugName:string;
+status:string;
+}

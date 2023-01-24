@@ -1,0 +1,71 @@
+
+<div class="Container" *ngIf="!isSuccess && !isUploadFailed">
+    <input (change)="selectFile($event)" type="file" accept=".xlsx" />
+    <button (click)="uploadFile()" class="btn">Upload</button>
+    <!-- <button class='btn btn-primary'(click)="resetFileUploader()">Clear</button> -->
+</div>
+
+<div class="Container2" *ngIf="isSuccess">
+    <u><h2>Inducted Patient Details Saved Successfully</h2></u>
+    <table><tr>
+            <th>PatientId</th>
+            <th>Patient Name</th>  
+            <th>Patient Address</th>  
+            <th>Patient DOB</th>
+            <th>Patient Email</th>
+            <th>Patient Phone</th>
+            <th>Drug Id</th>
+            <th>Drug Name</th>
+            <th>Status</th>
+        </tr> </table>
+<div *ngFor="let patient of validPatients">
+    <table>
+    <tr>
+    <td>{{patient.patientId}}</td>
+    <td>{{patient.patientName}}</td>
+    <td>{{patient.patientAddress}}</td>
+    <td>{{patient.patientDOB}}</td>
+    <td>{{patient.patientEmail}}</td>
+    <td>{{patient.patientPhone}}</td>
+    <td>{{patient.drugId}}</td>
+    <td>{{patient.drugName}}</td>
+    <td>{{patient.status}}</td>
+    </tr>
+    </table>
+    </div>
+
+    <hr><br>
+    <u><h2>Validation Failed Patient Details</h2></u>
+     <table><tr>
+            <th>Patient Name</th>  
+            <th>Patient Address</th>  
+            <th>Patient DOB</th>
+            <th>Patient Email</th>
+            <th>Patient Phone</th>
+            <th>Drug Id</th>
+            <th>Drug Name</th>
+            <th>Status</th>
+            <th>Error Message</th>
+        </tr> </table>
+
+<div *ngFor="let invalid of inValidPatients">
+    <table>
+    <tr>
+    <td>{{invalid.patientName}}</td>
+    <td>{{invalid.patientAddress}}</td>
+    <td>{{invalid.patientDOB}}</td>
+    <td>{{invalid.patientEmail}}</td>
+    <td>{{invalid.patientPhone}}</td>
+    <td>{{invalid.drugId}}</td>
+    <td>{{invalid.drugName}}</td>
+    <td>{{invalid.status}}</td>
+    <td class="alert alert-danger">{{invalid.errorMsg}}</td>
+    </tr>
+    </table>
+    </div>
+    <!-- <td><button  id='delete-btn' (click)='deleteBook(book.id)'>Delete Book</button></td> -->
+</div>
+
+<div class="Container" *ngIf="!isSuccess && isUploadFailed">
+    <h3><b><div class="alert alert-danger">{{this.errorMsg}}</div></b></h3>
+</div>

@@ -1,0 +1,22 @@
+#app{
+    background-image: url("../assets/images/background6.png");
+    background-size: 100%;
+    min-height: 1000px;
+    /* min-width: 250px; */
+    /* background-size: cover; */
+    /* position: fixed; */
+    /* background-repeat: no-repeat; */
+    /* top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1050;
+    opacity:.5; */
+    background-color:transparent;
+    }
+
+
+table,tr,td{
+  border: 1px solid black;
+}
+      

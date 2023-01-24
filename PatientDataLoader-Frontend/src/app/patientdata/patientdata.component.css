@@ -1,0 +1,32 @@
+table {
+    border: 1px solid black;
+    table-layout: fixed;
+    width: 250px;
+    background-color: whitesmoke;
+    /* background-image: url("src/assets/images/background5.png");
+    background-repeat: no-repeat;*/
+  }
+  
+  th,
+  td {
+    padding: 5px;
+    text-align: center;
+    border: 1px solid black;
+    width: 125px;
+    overflow: auto;
+  }
+
+  #update-btn{
+    display:inline-block;
+    padding:5px;
+    width:100%;
+    background-color: rgb(242, 175, 134);
+  }
+  button:hover {
+    background-color: #e665cc;
+    color:rgb(245, 240, 244);
+  }
+
+  .err-show{
+    margin:20px;
+  }

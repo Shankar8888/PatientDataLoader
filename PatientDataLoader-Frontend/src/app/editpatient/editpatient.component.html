@@ -1,0 +1,158 @@
+<div class="col-md-12">
+    <div class="card card-container">
+      <form 
+        *ngIf="!isSuccessful"
+        name="form"
+        (ngSubmit)="f.form.valid && editPatient()"
+        #f="ngForm"
+        novalidate
+      >
+      <h3>Edit Patient</h3>
+        <div class="form-group">
+          <label for="patientName">Patient Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="patientName"
+            [(ngModel)]="form.patientName"
+            required
+            minlength="5"
+            maxlength="30"
+            #patientName="ngModel"
+            pattern="[ a-zA-Z]+"
+          />
+          <div class="alert-danger" *ngIf="patientName.errors && f.submitted">
+            <div *ngIf="patientName.errors.required">Patient Name is required</div>
+            <div *ngIf="patientName.errors.minlength">
+                Patient Name must be at least 5 characters
+            </div>
+            <div *ngIf="patientName.errors.maxlength">
+                Patient Name must be at most 30 characters
+            </div>
+            <div *ngIf="patientName.errors.pattern">
+              Patient Name must contains alphabets only
+          </div>
+          </div>
+        </div>
+        <div class="form-group">
+            <label for="patientAddress">Patient Address</label>
+            <input
+              type="text"
+              class="form-control"
+              name="patientAddress"
+              [(ngModel)]="form.patientAddress"
+              required
+              #patientAddress="ngModel"
+            />
+            <div class="alert-danger" *ngIf="patientAddress.errors && f.submitted">
+              <div *ngIf="patientAddress.errors.required">Patient Address is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="patientDOB">Patient DOB</label>
+            <input
+              type="date"
+              class="form-control"
+              name="patientDOB"
+              [(ngModel)]="form.patientDOB"
+              required
+              #patientDOB="ngModel"
+            />
+            <div class="alert-danger" *ngIf="patientDOB.errors && f.submitted">
+              <div *ngIf="patientDOB.errors.required">Patient DOB is required</div>
+            </div>
+          </div>
+        <div class="form-group">
+          <label for="patientEmail">Patient Email</label>
+          <input
+            type="email"
+            class="form-control"
+            name="patientEmail"
+            [(ngModel)]="form.patientEmail"
+            required
+            email
+            #patientEmail="ngModel"
+          />
+          <div class="alert-danger" *ngIf="patientEmail.errors && f.submitted">
+            <div *ngIf="patientEmail.errors.required">Email is required</div>
+            <div *ngIf="patientEmail.errors.email">
+              Email must be a valid email address
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+            <label for="patientPhone">Patient Contact Number</label>
+            <input
+              type="number"
+              class="form-control"
+              name="patientPhone"
+              [(ngModel)]="form.patientPhone"
+              required
+              #patientPhone="ngModel"
+              pattern="[0-9]{10}"
+            />
+            <div class="alert-danger" *ngIf="patientPhone.errors && f.submitted">
+              <div *ngIf="patientPhone.errors.required">Patient Contact Number is required</div>
+            <div *ngIf="patientPhone.errors.pattern">
+                Contact Number must be contains 10 digit number
+            </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="drugId">Drug Id</label>
+            <input
+              type="text"
+              class="form-control"
+              name="drugId"
+              [(ngModel)]="form.drugId"
+              required
+              #drugId="ngModel"
+              [disabled]="true"
+            />
+            <div class="alert-danger" *ngIf="drugId.errors && f.submitted">
+              <div *ngIf="drugId.errors.required">Drug Id is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="drugName">Drug Name</label>
+            <input
+              type="text"
+              class="form-control"
+              name="drugName"
+              [(ngModel)]="form.drugName"
+              required
+              #drugName="ngModel"
+              [disabled]="true"
+            />
+            <div class="alert-danger" *ngIf="drugName.errors && f.submitted">
+              <div *ngIf="drugName.errors.required">Drug Name is required</div>
+            </div>
+          </div>
+        
+        <div class="form-group">
+          <button class="btn btn-primary btn-block">Update</button>
+        </div>
+  
+        <div class="alert alert-warning" *ngIf="f.submitted && isUpdateFailed">
+          Update failed!<br />{{ errorMessage }}
+        </div>
+      </form>
+  
+      <div class="alert alert-success" *ngIf="isSuccessful">
+        <h3>Patient Updated successfully..!</h3>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    function checkDOB() {
+        var dateString = document.getElementById('id_dateOfBirth').value;
+        var myDate = new Date(dateString);
+        var today = new Date();
+        if ( myDate > today ) { 
+            $('#id_dateOfBirth').after('<p>You cannot enter a date in the future!.</p>');
+            return false;
+        }
+        return true;
+    }
+</script>
